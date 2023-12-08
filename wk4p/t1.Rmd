@@ -1,0 +1,12 @@
+---
+title: "wk4p"
+output: html_document
+date: "2023-12-06"
+---
+```{r}
+library(terra)
+library(here)
+jan<-terra::rast(here("GIS","wk3phw","wc2.1_5m_tavg_01.tif"))
+# have a look at the raster layer jan
+plot(jan)
+```

@@ -1,0 +1,42 @@
+---
+title: "wk4phw"
+output: html_document
+date: "2023-12-08"
+---
+# library packages
+```{r}
+library(countrycode)
+library(tidyverse)
+library(here)
+library(sf)
+library(janitor)
+```
+# read csv and shp files include the first line
+```{r}
+#GGI means global gender inequality
+GGI <- read_csv(here::here("HDR21-22_Composite_indices_complete_time_series.csv"),
+                       locale = locale(encoding = "latin1"),
+                       na = " ")
+
+World <- st_read(here::here("World_Countries_Generalized", "World_Countries_Generalized.shp"))
+
+```
+# mutate a new column that shows the difference in inequality between 2010 and 2019
+```{r}
+#newGGI includes country, gii_2019, gii_2010 and new column differenceggi
+newGGI<- GGI %>%
+  clean_names()%>%
+  select(country, gii_2019, gii_2010)%>%
+  mutate(differenceggi=gii_2019-gii_2010)
+```
+# join data
+```{r}
+Joined_GGI <- World %>% 
+  clean_names() %>%
+  left_join(., 
+            newGGI,
+            by = c("country" = "country"))
+```
+
+
+
