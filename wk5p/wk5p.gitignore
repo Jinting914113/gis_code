@@ -1,9 +1,0 @@
-# Ignore everything
-*
-
-# But not these files
-!*.pdf
-!*.Rmd
-!*.Rproj
-!*.png
-!*.html
