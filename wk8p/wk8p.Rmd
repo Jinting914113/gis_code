@@ -1,8 +1,6 @@
 ---
 title: "wk8p"
-output:
-  pdf_document:
-    latex_engine: xelatex
+output: default
 
 date: "2023-12-11"
 editor_options:
